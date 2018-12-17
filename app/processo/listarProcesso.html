@@ -1,0 +1,61 @@
+<div class="row">
+	<div class="col-lg-12">
+		<ol class="breadcrumb">
+			<li><a href="#home">Início</a></li>
+			<li class="active">Processo</li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+   <div class="col-lg-12">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <p class="fa consulta"></p>
+            Processo
+         </div>
+         <div class="panel-body">
+            <div class="row">
+               <div class="col-lg-12">
+                  <form role="form">
+                     <div class="form-group">
+                        <label>Número</label>
+                        <input class="form-control" ng-model="ctrl.processo.numero">
+                     </div>
+                     <div class="botoes-group">
+                      <a id="buttonConsultar" class="btn btn-default" ng-click="ctrl.consultar()">Consultar</a>
+                      <a id="buttonIncluir" class="btn btn-default" ng-click="ctrl.incluir()">Incluir</a>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row" ng-show="ctrl.processos">
+   <div class="col-lg-12">
+      <div class="panel panel-default">
+         <div class="panel-body">
+            <table datatable="ng" class="table-striped row-border hover">
+               <thead>
+                  <tr>                     
+                     <th>Número</th>
+                     <th>Autor/Partes</th>
+                     <th>Valor da Causa</th>
+                     <th>Probabilidade Perda</th>
+                     <th>Fase Atual</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr ng-repeat="processo in ctrl.processos" ng-cloak ng-click="ctrl.editar(processo)">
+                     <td>{{processo.numero}}</td>
+                     <td>{{processo.autor}}{{processo.partes}}</td>
+                     <td>{{processo.valorCausa | currency }}</td>
+                     <td>{{processo.descricaoProbabilidadePerda}}</td>
+                     <td>Não definido</td>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,10 @@
+define(
+		[
+			'app/auth/authResource',
+			'app/info/infoResource',
+			'app/logAcao/logAcaoResource',
+			'app/usuarioTBG/usuarioTBGResource',
+			'app/acao/acaoResource',
+			'app/processo/processoResource'
+		]
+);

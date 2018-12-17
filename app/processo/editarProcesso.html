@@ -1,0 +1,187 @@
+<div class="row">
+  <div class="col-lg-12">
+    <ol class="breadcrumb">
+      <li><a ui-sref="home">Inicial</a>
+      <li class="active"><a ui-sref="processo">Processo</a></li>
+      <li class="active">{{ctrl.processo.numero}}</li>
+    </ol>
+  </div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-edit"></i>
+				Processo
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-12">
+						<form role="form" name="processoForm" novalidate>		
+							<div class="form-group">
+			                    <label>Tipo</label>
+			                    <div class="btn-group btn-toggle" style="width: 100%"> 
+							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'PSP'}" ng-click="ctrl.processo.tipo = 'PSP'">PSP</button>
+							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'CVL'}" ng-click="ctrl.processo.tipo = 'CVL'">Cível</button>
+							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'DSP'}" ng-click="ctrl.processo.tipo = 'DSP'">Desapropriação</button>
+							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'AMB'}" ng-click="ctrl.processo.tipo = 'AMB'">Ambiental</button>
+							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'TAD'}" ng-click="ctrl.processo.tipo = 'TAD'">Tributário - Administrativo</button>
+							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'TJU'}" ng-click="ctrl.processo.tipo = 'TJU'">Tributário - Judicial</button>
+							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'TRA'}" ng-click="ctrl.processo.tipo = 'TRA'">Trabalhista</button>
+							    	<input type="hidden" ng-model="ctrl.processo.tipo" required>
+							  	</div>			                    
+			                </div>	
+			                <div ng-if="ctrl.processo.tipo">
+				                <div class="row">											
+									<div class="form-group col-md-6">
+										<label>Número</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.numero" maxlength="10" required ng-disabled="ctrl.processo.id">
+									</div>
+									<div class="form-group col-md-6" ng-if="ctrl.processo.tipo != 'TAD' && ctrl.processo.tipo != 'AMB'">
+										<label>Nº Processo</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.numeroProcesso" maxlength="100" required>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-6" ng-if="ctrl.processo.tipo != 'AMB'">
+										<label>Autor</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.autor" maxlength="1000" required>
+									</div>
+									<div class="form-group col-md-6" ng-if="ctrl.processo.tipo == 'PSP' || ctrl.processo.tipo == 'DSP' || ctrl.processo.tipo == 'TAD' || ctrl.processo.tipo == 'TJU'">
+										<label>Réu</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.reu" maxlength="1000" required>
+									</div>
+									<div class="form-group col-md-6" ng-if="ctrl.processo.tipo == 'CVL' || ctrl.processo.tipo == 'TRA'">
+										<label>Reclamadas</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.reclamadas" maxlength="1000" required>
+									</div>
+									<div class="form-group col-md-6" ng-if="ctrl.processo.tipo == 'AMB'">
+										<label>Partes</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.partes" maxlength="1000" required>
+									</div>
+								</div>
+								<div class="form-group" ng-if="ctrl.processo.tipo == 'AMB'">
+									<label>Nº Procedimento</label>
+									<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.numeroProcedimento" maxlength="100" required>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-5" ng-if="ctrl.processo.tipo != 'TAD' && ctrl.processo.tipo != 'AMB'">
+										<label>Vara</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.vara" maxlength="100" required>
+									</div>
+									<div class="form-group col-md-5" ng-if="ctrl.processo.tipo == 'PSP' || ctrl.processo.tipo == 'DSP' || ctrl.processo.tipo == 'TJU'">
+										<label>Comarca</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.comarca" maxlength="100" required>
+									</div>
+									<div class="form-group col-md-5" ng-if="ctrl.processo.tipo == 'CVL' || ctrl.processo.tipo == 'TRA'">
+										<label>Local</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.local" maxlength="100" required>
+									</div>
+									<div class="form-group col-md-12" ng-if="ctrl.processo.tipo == 'AMB' || ctrl.processo.tipo == 'TAD'">
+										<label>Orgão</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.orgao" maxlength="100" required>
+									</div>
+									<div class="form-group col-md-2" ng-if="ctrl.processo.tipo != 'TAD'">
+										<label>UF</label>
+										<select class="form-control" ng-model="ctrl.processo.uf" ng-options="uf.nome for uf in ctrl.LISTA_UF track by uf.codigo" required>
+					                      <option value="">Informe a UF</option>
+					                    </select>									
+									</div>
+								</div>
+								<div class="form-group" ng-if="ctrl.processo.tipo == 'TAD'">
+									<label>Processo Administrativo</label>
+									<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.numeroProcessoAdministrativo" maxlength="100" required>
+								</div>
+								
+								<div class="form-group" ng-if="ctrl.processo.tipo == 'PSP'">
+									<label>Cargo</label>
+									<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.cargo" maxlength="100" required>
+								</div>
+								<div class="form-group">
+									<label>Objeto</label>
+									<textarea class="form-control" ng-model="ctrl.processo.objeto" rows="3"></textarea>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-6">
+										<label>Valor da Causa</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.valorCausa" maxlength="14" required mask="000.000.000,00" reverse="true">
+									</div>
+									<div class="form-group col-md-6" ng-if="ctrl.processo.tipo == 'CVL' || ctrl.processo.tipo == 'DSP' || ctrl.processo.tipo == 'TRA'">
+										<label>Valor da Execução</label>
+										<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.valorExecucao" maxlength="14" required mask="000.000.000,00" reverse="true">
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Depósito Judicial</label>
+									<div style="display: -webkit-box;">
+										<div class="btn-group btn-toggle" style="width: 100%"> 
+									    	<button class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.depositoJudicial == 'S'}" ng-click="ctrl.processo.depositoJudicial = 'S'">Sim</button>
+									    	<button class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.depositoJudicial == 'N'}" ng-click="ctrl.processo.depositoJudicial = 'N'; ctrl.processo.valorDepositoJudicial = null">Não</button>
+									    	<input type="hidden" ng-model="ctrl.processo.depositoJudicial" required>
+									  	</div>	
+									  	<input style="margin-left: 10px; width: 138px;" class="form-control" placeholder="Valor do Depósito" ng-model="ctrl.processo.valorDepositoJudicial" maxlength="14" required mask="000.000.000,00" reverse="true" ng-if="ctrl.processo.depositoJudicial == 'S'">
+								  	</div>
+								</div>
+								<div class="form-group">
+									<label>Probabilidade de Perda</label>
+									<div class="btn-group btn-toggle" style="width: 100%"> 
+								    	<button class="btn btn-default" ng-class="{'btn-danger': ctrl.processo.probabilidadePerda == 'PR'}" ng-click="ctrl.processo.probabilidadePerda = 'PR'">Provável</button>
+								    	<button class="btn btn-default" ng-class="{'btn-warning': ctrl.processo.probabilidadePerda == 'PS'}" ng-click="ctrl.processo.probabilidadePerda = 'PS'">Possível</button>
+								    	<button class="btn btn-default" ng-class="{'btn-success': ctrl.processo.probabilidadePerda == 'RE'}" ng-click="ctrl.processo.probabilidadePerda = 'RE'">Remota</button>
+								    	<button class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.probabilidadePerda == 'NA'}" ng-click="ctrl.processo.probabilidadePerda = 'NA'">Não Aplicável</button>
+								    	<input type="hidden" ng-model="ctrl.processo.probabilidadePerda" required>
+								  	</div>	
+								</div>
+								<div class="form-group" ng-if="ctrl.processo.tipo == 'AMB'">
+									<label>Nº Procedimento</label>
+									<input class="form-control" placeholder="Obrigatório" ng-model="ctrl.processo.numeroProcedimento" maxlength="100" required>
+								</div>
+							</div>
+							<div class="botoes-group">
+								<button id="buttonVoltar" class="btn btn-default" ng-click="ctrl.voltar()">
+									Voltar
+								</button>
+                				<button id="buttonSalvar" class="btn btn-primary" busy busy-disabled="true" busy-when-url="processo" ng-click="ctrl.salvar()" ng-show="!ctrl.isInativado" ng-disabled="processoForm.$invalid"> 
+                					Salvar
+                				</button>
+                				<button id="buttonExcluir" busy busy-disabled="true" busy-when-url="comunicado" mwl-confirm title="Deseja inativar o comunicado?" confirm-text="Sim" cancel-text="Não" confirm-button-type="danger" animation="true" on-confirm="ctrl.inativar()" class="btn btn-danger pull-right" ng-show="ctrl.comunicado.id && !ctrl.isInativado">
+                                    Inativar
+                                </button>
+							</div>							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="panel-group" ng-if="ctrl.processo.id">
+	<div class="panel panel-default">
+		<div class="panel-heading accordion-toggle collapsed link" data-toggle="collapse" href="#collapse">
+			<i class="fa fa-clock-o fa-fw"></i> Timeline do Processo
+		</div>
+		<div class="panel-body panel-collapse collapse" id="collapse">
+			<ul class="timeline">
+				<li ng-repeat="etapa in ctrl.processo.etapas">
+					<div class="timeline-badge success"><i class="fa fa-check"></i>
+					</div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h4 class="timeline-title">{{etapa.descricaoEvento}}</h4>							
+							<p>
+								<small class="text-muted">
+								<i class="fa fa-clock-o"></i> {{etapa.data | date:'dd/MM/yyyy HH:mm'}}
+								</small>
+							</p>
+							<p>
+								<small class="text-muted">
+								<i class="fa fa-user"></i> {{etapa.usuario}}
+								</small>
+							</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

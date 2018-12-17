@@ -1,0 +1,594 @@
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}  
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+html,
+body {
+  	height: 100%;
+  	margin: 0;
+}
+
+html, body, button {
+    font-family: 'Ruda' !important;
+}
+
+a {
+  cursor: pointer
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.app-loaded {
+	display: block !important;
+	-webkit-animation: fadeIn 0.4s;
+    animation: fadeIn 0.4s;
+}
+
+.page-wrapper {
+    position: inherit;
+    padding: 0 30px;
+    border-left: 1px solid #e7e7e7;
+}
+
+.pre-load {
+	background: url('../imgs/spinner.gif') no-repeat center;
+	background-color: #f8f8f8;
+	min-height: 100%; 
+	min-width: 100%;    
+}
+
+.hide-loader {
+	display: none !important;
+}
+
+img.spinner{
+   position:absolute;
+   top:50%;
+   left:50%;
+   margin-top:-25px;
+   margin-left:-25px;
+}
+
+#tbg-logo {
+    width: 99px;
+    height: 75px;
+}
+
+#tbg-logo a {
+    display: block;    
+    background: url(../imgs/logo-tbg-plain.png) no-repeat left center;
+    background-size: 88px 38px;
+    height: 46px;
+    width: 156px;
+}
+
+.ng-touched.ng-invalid{
+    border-bottom: 1px solid red;
+}
+
+.botoes-group button{
+    margin-right: 5px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.login-panel {
+    margin-top: 50% !important;
+}
+
+.versao {
+    margin-top: 34px;    
+    font-size: 9px;
+    margin-left: 3px;
+    color: #003976;
+}
+
+.logotipo-tbg {
+height: 48px;
+    width: 100px;
+    margin-left: 35px;
+    background: url(../imgs/logo-tbg-plain.png) no-repeat;
+    background-size: 100px 38px;
+    margin-top: 6px;
+}
+
+.navbar{
+	border-bottom: 1px solid #003976;
+}
+
+.btn-home-list {
+    font-size: 0;
+    padding-left: 6px;
+}
+
+.btn-home {
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    width: 120px;
+    height: 107px;
+}
+
+.btn-home-list li, .btn-alert-list li {
+    display: inline-block;
+    padding: 6px;
+    vertical-align: top;
+}
+
+.btn-home .fa {
+    font-size: 40px;
+}
+
+.btn-home span {
+    display: block;
+    white-space: normal;
+    line-height: 16px;
+    margin-top: 6px;
+}
+
+.page-header {
+    margin-top: 0px;
+}
+
+.navbar-top-links li {
+    display: inline-block;
+}
+
+.navbar-top-links li:last-child {
+    margin-right: 15px;
+}
+
+.navbar-top-links {
+    margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li {
+    display: block;
+}
+
+.navbar-top-links .dropdown-user {
+    right: 0;
+    left: auto;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+}
+
+.dataTable>tbody>tr:hover {
+    cursor: pointer;
+}
+
+.popover-content p{
+    margin: 0;
+}
+
+/* start 'enter' transition on main view */
+div.ng-enter {
+    transition: .5s;
+    opacity: 0;
+}
+
+div.ng-enter-active {
+    opacity: 1;
+}
+
+.uib-datepicker-popup {
+    z-index: 100000;
+}
+
+.drop-box {
+    background: #F8F8F8;
+    border: 2px dashed #DDD;
+    border-radius: 3px;
+    color: #CCC;
+    font-size: 10pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.upload {
+    color: #CCC;
+    font-size: 19px;
+    padding-top: 3px;
+}
+
+.upload:before {
+    content: "\f093";
+}
+
+.upload-text {
+    color: #CCC;
+    font-size: 10pt;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.upload-item-text {
+    color: #737373;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.upload-item {
+    color: #CCC;
+    font-size: 10pt;
+    font-weight: bold;
+    margin-top: 7px;
+}
+
+.container-upload {
+    padding: 10px;
+}
+
+.produtos{
+    min-width: 494px !important;
+}
+
+.produtos .produtos-itens{
+    display: inline-block;
+    margin-top: -2px;
+}
+
+.produtos-itens .as-sortable-item, .produtos-itens .as-sortable-placeholder {
+   display: inline-block;
+    float: left;
+}
+
+.produtos-itens div{
+    padding: 0px 1px;
+}
+
+
+.tree{
+    display: inline-block;
+}
+
+.tree ul {
+    padding-top: 20px; position: relative;
+    
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.tree li {
+    float: left; text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+    
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after{
+    content: '';
+    position: absolute; top: 0; right: 50%;
+    border-top: 1px solid #ccc;
+    width: 50%; height: 20px;
+}
+.tree li::after{
+    right: auto; left: 50%;
+    border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+    display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after{
+    border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before{
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after{
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before{
+    content: '';
+    position: absolute; top: 0; left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0; height: 20px;
+}
+
+.tree li div{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #666;
+    font-family: arial, verdana, tahoma;
+    font-size: 11px;
+    display: inline-block;
+    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+
+    min-height: 50px;
+    background-color: #337ab7;
+    color: #fff;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li div:hover, .tree li div:hover+ul li div {
+    background: #003976; border: 1px solid #94a0b4;
+    cursor: pointer;
+}
+/*Connector styles on hover*/
+.tree li div:hover+ul li::after, 
+.tree li div:hover+ul li::before, 
+.tree li div:hover+ul::before, 
+.tree li div:hover+ul ul::before{
+    border-color:  #94a0b4;
+}
+
+.tree button{
+    margin: 6px 6px;
+}
+
+.etapa-ativa {
+    background-color: #248224 !important;
+}
+
+.etapa-finalizada {
+    background-color: #707172 !important;
+}
+
+.lista-produtos {
+    margin: 10px;
+    padding: 0;
+    list-style: none;
+    min-height: 20px;
+}
+
+.coluna-drag {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.no-pointer>tbody>tr:hover {
+    cursor: inherit !important;
+}
+
+ div.legenda-situacao-leilao{
+    margin-bottom: 5px
+}
+
+div.leilao-container{
+    border: 0px;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+div.leilao-container > div:nth-child(2){
+    padding: 5px 15px;
+    height: 33px;
+    border: 3px solid #ece8e8;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+div.leilao-container .panel-heading{
+    min-height: 125px;
+    border-color: #ffffff;
+    border: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #ece8e8;
+}
+
+div.leilao-container > div.panel-heading > div.row > div:first-child{
+    font-weight: 600 !important;
+    margin-bottom: 3px;
+}
+
+div.leilao-container > div.panel-heading > div.row > div{
+    color: #84807d;
+}
+
+span.acao-leilao{
+    color: #92807d;
+}
+
+span.acao-leilao:hover {
+    color: #33302f;
+}
+
+div.etapa-selecionada{
+    background-color: #f7f5f5;
+}
+
+.table-tarifas>tbody>tr>td {
+    padding: 5px 0 3px 11px;
+}
+
+.input-sm {
+    height: 25px;
+}
+
+table.dataTable tbody td, table.dataTable tbody th {
+    padding: 7px 18px;
+}
+
+.ui-select-choices-group{
+    width: 100%;
+}
+
+.stepwizard-step p {
+    margin: 2px 0 -2px 0;
+}
+
+.stepwizard-step div {
+    font-weight: 600;
+}
+
+.stepwizard-step>.btn-default.active, .stepwizard-step>.btn-default.focus,
+    .stepwizard-step>.btn-default:active, .stepwizard-step>.btn-default:focus,
+    .stepwizard-step>.btn-default:hover, .open>.dropdown-toggle.btn-default
+    {    
+    border-color: #ccc;
+    cursor: pointer;
+}
+
+.stepwizard {
+    display: table;
+    width: 100%;
+    position: relative;
+}
+
+.stepwizard-step button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity = 100) !important;
+}
+
+.stepwizard-row:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    z-order: 0;
+}
+
+.stepwizard-step {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+.stepwizard-cadastrar-cliente .stepwizard-step{
+    width: 10%;
+}
+
+.stepwizard-content {
+    border: none !important;
+    float: left !important;
+    margin-top: 0 !important;
+    padding: 15px !important;
+    width: 100% !important;
+}
+
+.active-step {
+    background-color: #428bca;
+}
+
+.btn-circle {
+    width: 34px;
+    height: 34px;
+    padding: 9px 0;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-color: #003976;
+}
+
+form h2{
+    border-bottom: 1px solid #f1e3e3;
+    margin-left: 3%;
+    padding-bottom: 10px;
+}
+
+div.selecao-itens-drag{
+    text-align: center;
+    width: 57px;
+    margin-top: 10px;
+}
+
+div.selecao-itens-drag button{
+    margin: 8px 0px;
+    padding: 9px;
+}
+
+.panel-primary>.panel-heading { 
+    background-color: #0077BB;
+}
+
+.breadcrumb {
+    padding: 8px 15px 0 0;
+    background-color: initial;   
+    margin-bottom: 14px; 
+}
+
+button.botao-selecionado{
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.timeline-heading>p {
+    margin: 0 0 2px;
+}
+
+h4.timeline-title {
+    margin-bottom: 5px;
+}
+
+.graph-container {
+    padding: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #eee;
+    position: relative;
+}
+
+.graph-container .caption {
+    text-align: center;
+}
+
+.graph-container::after {    
+    display: block;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    border: 1px solid #ccc;
+    background-color: #eeeeee;
+    padding: 3px 8px;
+    font-size: 12px;
+}
+
+.graph-container-numero-processos-probabilidade-perda::after {
+    content: "Número Processos por Probabilidade de Perda";
+}
+
+.graph-container-valor-causa-processos-probabilidade-perda::after {
+    content: "Valor das Causas dos Processos por Probabilidade de Perda";
+}
