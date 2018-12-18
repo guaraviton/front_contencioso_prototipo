@@ -10,7 +10,7 @@ function ProcessoResource($resource) {
       'id': ''
     }, 
     {
-    	inativar: {method: 'DELETE'}
+    	incluirAndamento: {method: 'PUT', url: urlBase + '/andamento', params: {id: '@id'}},
     });
   return rest;
 }

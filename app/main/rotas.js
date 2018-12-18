@@ -63,4 +63,10 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	    	}]
         }
 	})
+	.state('quadroProcessos', {
+		url : '/quadroProcessos',
+		templateUrl: 'app/quadroProcessos/quadroProcessos.html',
+		controller: "QuadroProcessosController",
+		controllerAs: "ctrl"
+	})
 });

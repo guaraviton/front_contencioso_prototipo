@@ -45,4 +45,6 @@ function HomeController($rootScope, $filter) {
 
     ctrl.totalValorCausa = ctrl.totalValorCausaProvavel + ctrl.totalValorCausaPossivel + ctrl.totalValorCausaRemota + ctrl.totalValorCausaNaoAplicavel;    
 
+    ctrl.coresGrafico = ["#d9534f", "#f0ad4e", "#5cb85c", "#337ab7"];
+
 }

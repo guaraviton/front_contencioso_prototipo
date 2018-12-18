@@ -77,7 +77,6 @@ app.run(['$httpBackend', '$rootScope', '$filter', function($httpBackend, $rootSc
           data: new Date(),
           usuario: 'Usuário Contencioso'
         }];
-
         $rootScope.processos.push(processoRef);         
       }else{
         var index = $rootScope.processos.indexOf($filter('filter')($rootScope.processos, {id: processoRef.id})[0]);
@@ -89,7 +88,28 @@ app.run(['$httpBackend', '$rootScope', '$filter', function($httpBackend, $rootSc
         });      
       }
       return [200, processoRef, {}];
-    });    
+    });   
+
+    $httpBackend.whenPUT(/tbg\/processo\/.*\/andamento/).respond(function(method, url, data) {      
+      var processoRef = $filter('filter')($rootScope.processos, {id: url.split('/')[3]})[0];
+      if(!processoRef.etapas){
+          ctrl.processo.etapas = [];
+      }      
+      processoRef.etapas.push({
+        descricaoEvento: 'Inclusão de Andamento',
+        data: new Date(),
+        usuario: 'Usuário Contencioso'
+      });      
+      if(!processoRef.andamento){
+          ctrl.processo.andamento = [];
+      }
+      processoRef.andamento.unshift({
+          texto: data,
+          data: new Date(),
+          usuario: 'Usuário Contencioso'
+      });
+      return [200, processoRef, {}];
+    }); 
 
   	$httpBackend.whenGET(/app\/./).passThrough();
   	

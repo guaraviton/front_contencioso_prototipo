@@ -94,6 +94,18 @@ app.constant('LISTA_UF',
     ]
 )
 
+app.constant('LISTA_TIPOS_PROCESSO',
+    [
+        { codigo: "PSP", descricao: "PSP" },
+        { codigo: "CVL", descricao: "Cível" },
+        { codigo: "DSP", descricao: "Desapropriação" },
+        { codigo: "AMB", descricao: "Ambiental" },
+        { codigo: "TAD", descricao: "Tributário - Administrativo" },
+        { codigo: "TJU", descricao: "Tributário - Judicial" },
+        { codigo: "TRA", descricao: "Trabalhista" }
+
+    ]
+)
 
 app.run(['$rootScope', function($rootScope) {
 
@@ -103,7 +115,7 @@ app.run(['$rootScope', function($rootScope) {
             cargo: "1",
             comarca: "12",
             depositoJudicial: "S",
-            id: 1545070945281,
+            id: 154507094123,
             numero: "1",
             numeroProcesso: "12",
             objeto: "12",
@@ -115,9 +127,62 @@ app.run(['$rootScope', function($rootScope) {
             valorCausa: 452124.01,
             valorDepositoJudicial: "12",
             vara: "12",
+            faseAtual: '1grau',
+            criacao: new Date(),
+            andamento: [
+                {
+                    texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                }
+            ],
             etapas: [
                 {
                     descricaoEvento: 'Criação',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                },
+                {
+                    descricaoEvento: 'Inclusão de Andamento',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                }
+            ]
+        },
+        {
+            autor: "Teste 1",
+            cargo: "1",
+            comarca: "12",
+            depositoJudicial: "S",
+            id: 1545070945281,
+            numero: "999",
+            numeroProcesso: "12",
+            objeto: "12",
+            probabilidadePerda: "PR",
+            descricaoProbabilidadePerda: 'Provável',
+            reu: "12",
+            tipo: "PSP",
+            uf: {codigo: "AC", nome: "Acre"},
+            valorCausa: 452124.01,
+            valorDepositoJudicial: "12",
+            vara: "12",
+            faseAtual: '1grau', 
+            criacao: new Date(),
+            andamento: [
+                {
+                    texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                }
+            ],
+            etapas: [
+                {
+                    descricaoEvento: 'Criação',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                },
+                {
+                    descricaoEvento: 'Inclusão de Andamento',
                     data: new Date(),
                     usuario: 'Usuário Contencioso'
                 }
@@ -140,9 +205,23 @@ app.run(['$rootScope', function($rootScope) {
             valorCausa: 902612.01,
             valorDepositoJudicial: "12",
             vara: "12",
+            faseAtual: '1grau', 
+            criacao: new Date(),
+            andamento: [
+                {
+                    texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                }
+            ],
             etapas: [
                 {
                     descricaoEvento: 'Criação',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                },
+                {
+                    descricaoEvento: 'Inclusão de Andamento',
                     data: new Date(),
                     usuario: 'Usuário Contencioso'
                 }
@@ -165,9 +244,23 @@ app.run(['$rootScope', function($rootScope) {
             valorCausa: 1211212.01,
             valorDepositoJudicial: "12",
             vara: "12",
+            faseAtual: 'recursal', 
+            criacao: new Date(),
+            andamento: [
+                {
+                    texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                }
+            ],
             etapas: [
                 {
                     descricaoEvento: 'Criação',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                },
+                {
+                    descricaoEvento: 'Inclusão de Andamento',
                     data: new Date(),
                     usuario: 'Usuário Contencioso'
                 }
@@ -190,9 +283,23 @@ app.run(['$rootScope', function($rootScope) {
             valorCausa: 1211212.01,
             valorDepositoJudicial: "12",
             vara: "12",
+            faseAtual: 'recursal', 
+            criacao: new Date(),
+            andamento: [
+                {
+                    texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                }
+            ],
             etapas: [
                 {
                     descricaoEvento: 'Criação',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                },
+                {
+                    descricaoEvento: 'Inclusão de Andamento',
                     data: new Date(),
                     usuario: 'Usuário Contencioso'
                 }
@@ -215,9 +322,23 @@ app.run(['$rootScope', function($rootScope) {
             valorCausa: 123123.01,
             valorDepositoJudicial: "12",
             vara: "12",
+            faseAtual: 'suspenso', 
+            criacao: new Date(),
+            andamento: [
+                {
+                    texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                }
+            ],
             etapas: [
                 {
                     descricaoEvento: 'Criação',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                },
+                {
+                    descricaoEvento: 'Inclusão de Andamento',
                     data: new Date(),
                     usuario: 'Usuário Contencioso'
                 }
@@ -240,9 +361,23 @@ app.run(['$rootScope', function($rootScope) {
             valorCausa: 12343.24,
             valorDepositoJudicial: "12",
             vara: "12",
+            faseAtual: 'suspenso', 
+            criacao: new Date(),
+            andamento: [
+                {
+                    texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                }
+            ],
             etapas: [
                 {
                     descricaoEvento: 'Criação',
+                    data: new Date(),
+                    usuario: 'Usuário Contencioso'
+                },
+                {
+                    descricaoEvento: 'Inclusão de Andamento',
                     data: new Date(),
                     usuario: 'Usuário Contencioso'
                 }

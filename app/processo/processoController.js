@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('app').controller('ProcessoController', [ '$state', 'toaster', 'ProcessoResource', 'LISTA_UF', 'processo', ProcessoController ]);
+angular.module('app').controller('ProcessoController', [ '$state', 'toaster', 'ProcessoResource', 'LISTA_TIPOS_PROCESSO', 'LISTA_UF', 'processo', ProcessoController ]);
 
-function ProcessoController($state, toaster, ProcessoResource, LISTA_UF, processo) {
+function ProcessoController($state, toaster, ProcessoResource, LISTA_TIPOS_PROCESSO, LISTA_UF, processo) {
     
 	var ctrl = this;
+    ctrl.LISTA_TIPOS_PROCESSO = LISTA_TIPOS_PROCESSO;
     ctrl.LISTA_UF = LISTA_UF;
 
 	ctrl.consultar = function() {   
@@ -32,6 +33,20 @@ function ProcessoController($state, toaster, ProcessoResource, LISTA_UF, process
             ctrl.processo.etapas = data.etapas;
         });
     };  
+
+    ctrl.abrirModalInclusaoAndamento = function() {           
+        $('#modalInclusaoAndamento').modal('toggle');  
+    }; 
+
+    ctrl.incluirAndamento = function() {           
+        ProcessoResource.incluirAndamento({id : ctrl.processo.id}, ctrl.processo.novoAndamento, function(data) {
+            toaster.pop('success', null, 'Andamento de Processo incluído com sucesso');            
+            ctrl.processo.etapas = data.etapas;
+            ctrl.processo.andamento = data.andamento;
+            ctrl.processo.novoAndamento = null;
+            $('#modalInclusaoAndamento').modal('toggle');
+        });
+    };
 
     if(processo){
         ctrl.processo = processo;

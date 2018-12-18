@@ -3,6 +3,7 @@ define(
 			'app/main/mainController',
 			'app/home/homeController',
 			'app/logAcao/logAcaoController',
-			'app/processo/processoController'
+			'app/processo/processoController',
+			'app/quadroProcessos/quadroProcessosController'
 		]
 );

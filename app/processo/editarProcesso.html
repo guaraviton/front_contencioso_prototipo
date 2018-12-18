@@ -21,13 +21,7 @@
 							<div class="form-group">
 			                    <label>Tipo</label>
 			                    <div class="btn-group btn-toggle" style="width: 100%"> 
-							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'PSP'}" ng-click="ctrl.processo.tipo = 'PSP'">PSP</button>
-							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'CVL'}" ng-click="ctrl.processo.tipo = 'CVL'">Cível</button>
-							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'DSP'}" ng-click="ctrl.processo.tipo = 'DSP'">Desapropriação</button>
-							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'AMB'}" ng-click="ctrl.processo.tipo = 'AMB'">Ambiental</button>
-							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'TAD'}" ng-click="ctrl.processo.tipo = 'TAD'">Tributário - Administrativo</button>
-							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'TJU'}" ng-click="ctrl.processo.tipo = 'TJU'">Tributário - Judicial</button>
-							    	<button ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == 'TRA'}" ng-click="ctrl.processo.tipo = 'TRA'">Trabalhista</button>
+							    	<button ng-repeat="tipoProcesso in ctrl.LISTA_TIPOS_PROCESSO" ng-disabled="ctrl.processo.id" class="btn btn-default" ng-class="{'btn-primary': ctrl.processo.tipo == tipoProcesso.codigo}" ng-click="ctrl.processo.tipo = tipoProcesso.codigo">{{tipoProcesso.descricao}}</button>
 							    	<input type="hidden" ng-model="ctrl.processo.tipo" required>
 							  	</div>			                    
 			                </div>	
@@ -141,12 +135,12 @@
 								<button id="buttonVoltar" class="btn btn-default" ng-click="ctrl.voltar()">
 									Voltar
 								</button>
-                				<button id="buttonSalvar" class="btn btn-primary" busy busy-disabled="true" busy-when-url="processo" ng-click="ctrl.salvar()" ng-show="!ctrl.isInativado" ng-disabled="processoForm.$invalid"> 
+                				<button id="buttonSalvar" class="btn btn-primary" busy busy-disabled="true" busy-when-url="processo" ng-click="ctrl.salvar()" ng-disabled="processoForm.$invalid"> 
                 					Salvar
                 				</button>
-                				<button id="buttonExcluir" busy busy-disabled="true" busy-when-url="comunicado" mwl-confirm title="Deseja inativar o comunicado?" confirm-text="Sim" cancel-text="Não" confirm-button-type="danger" animation="true" on-confirm="ctrl.inativar()" class="btn btn-danger pull-right" ng-show="ctrl.comunicado.id && !ctrl.isInativado">
-                                    Inativar
-                                </button>
+                				<button id="buttonIncluirAndamento" class="btn btn-primary" busy busy-disabled="true" busy-when-url="processo" ng-click="ctrl.abrirModalInclusaoAndamento()" ng-if="ctrl.processo.id"> 
+                					Incluir Andamento
+                				</button>
 							</div>							
 						</form>
 					</div>
@@ -157,10 +151,40 @@
 </div>
 <div class="panel-group" ng-if="ctrl.processo.id">
 	<div class="panel panel-default">
-		<div class="panel-heading accordion-toggle collapsed link" data-toggle="collapse" href="#collapse">
+		<div class="panel-heading accordion-toggle collapsed link" data-toggle="collapse" href="#andamentoProcesso">
+			<i class="fa fa-list-alt fa-fw"></i> Andamento do Processo
+		</div>
+		<div class="panel-body panel-collapse collapse" id="andamentoProcesso">
+			<ul class="timeline">
+				<li ng-repeat="andamento in ctrl.processo.andamento">
+					<div class="timeline-badge success"><i class="fa fa-check"></i>
+					</div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							{{andamento.texto}}					
+							<p>
+								<small class="text-muted">
+								<i class="fa fa-clock-o"></i> {{andamento.data | date:'dd/MM/yyyy HH:mm'}}
+								</small>
+							</p>
+							<p>
+								<small class="text-muted">
+								<i class="fa fa-user"></i> {{andamento.usuario}}
+								</small>
+							</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="panel-group" ng-if="ctrl.processo.id">
+	<div class="panel panel-default">
+		<div class="panel-heading accordion-toggle collapsed link" data-toggle="collapse" href="#timelineProcesso">
 			<i class="fa fa-clock-o fa-fw"></i> Timeline do Processo
 		</div>
-		<div class="panel-body panel-collapse collapse" id="collapse">
+		<div class="panel-body panel-collapse collapse" id="timelineProcesso">
 			<ul class="timeline">
 				<li ng-repeat="etapa in ctrl.processo.etapas">
 					<div class="timeline-badge success"><i class="fa fa-check"></i>
@@ -184,4 +208,30 @@
 			</ul>
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="modalInclusaoAndamento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Incluir Andamento de Processo</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" name="ctrl.andamentoProcessoForm" novalidate>
+					<div class="form-group">
+						<label>Texto</label>
+						<textarea class="form-control" ng-model="ctrl.processo.novoAndamento" rows="10" required></textarea>
+					</div>					
+				</form>			
+			</div>
+			<div class="modal-footer">
+				<div class="botoes-group">
+					<button class="btn btn-default" data-dismiss="modal">Fechar</button>
+					<button id="buttonSalvar" class="btn btn-primary" ng-click="ctrl.incluirAndamento()" ng-disabled="ctrl.andamentoProcessoForm.$invalid">Incluir</button>
+				</div>	
+				                  
+			</div>
+		</div>
+	</div>	
 </div>

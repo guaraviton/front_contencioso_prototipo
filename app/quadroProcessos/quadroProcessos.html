@@ -1,0 +1,98 @@
+<div class="row">
+   <div class="col-lg-12">
+      <ol class="breadcrumb">
+         <li><a href="#home">Início</a></li>
+         <li class="active">Quadro de Processos</li>
+      </ol>
+   </div>
+</div>
+<div class="row">
+   <div class="col-md-12">
+      <div id="ghx-work" class="ghx-work">
+         <div id="ghx-pool-column">
+            <div id="ghx-pool" class="ghx-band-1" style="display: block; ">
+               <div class="ghx-column-header-group ghx-has-stats ghx-fixed">
+                  <ul id="ghx-column-headers" class="ghx-column-headers">
+                     <li class="ghx-column">
+                        <div class="ghx-qty">{{ctrl.processosFase1grau.length}}</div>
+                        <h2>1º grau</h2>
+                     </li>
+                     <li class="ghx-column">
+                        <div class="ghx-qty">{{ctrl.processosFaseRecursal.length}}</div>
+                        <h2>Recursal</h2>
+                     </li>
+                     <li class="ghx-column">
+                        <div class="ghx-qty">{{ctrl.processosFaseSuspenso.length}}</div>
+                        <h2>Suspenso</h2>
+                     </li>
+                  </ul>
+               </div>
+               <div class="ghx-swimlane" style="width: 100%">
+                  <ul class="ghx-columns">
+                     <li class="ghx-column ui-sortable">
+                        <div class="ghx-issue ghx-has-avatar link" ng-repeat="processo in ctrl.processosFase1grau" ng-click="ctrl.abrirProcesso(processo)">
+                           <span class="label label-primary lb-md">{{processo.numero}}</span>
+                           <strong class="pull-right primary-font">{{processo.descricaoProbabilidadePerda}}&nbsp;({{processo.valorCausa | currency }})</strong>
+                           <small class=" text-muted">
+                           <div class="ghx-summary"><span class="ghx-inner">{{processo.autor}}{{processo.partes}}</span></div>
+                           </small>
+                           <small class=" text-muted">
+                           	<i class="fa fa-clock-o fa-fw"></i> 
+                           		<div ng-if="!cotacao.numeroDiasRenovacao" style="display: inline-flex">{{processo.criacao  | date:'dd/MM/yyyy HH:mm' }}</div>
+	                            <div ng-if="cotacao.numeroDiasRenovacao" style="display: inline-flex">
+	                            	Apólice {{cotacao.numeroDiasRenovacao < 0 ? cotacao.numeroDiasRenovacao * -1 : cotacao.numeroDiasRenovacao}} dias 
+	                            	<div ng-if="cotacao.numeroDiasRenovacao <= 0">&nbsp;para vencer</div>
+	                            	<div ng-if="cotacao.numeroDiasRenovacao > 0">&nbsp;vencidos</div>
+	                            </div>
+                           </small>
+                           <div class="ghx-grabber" style="background-color:{{processo.probabilidadePerda == 'PR' ? '#d9534f' : processo.probabilidadePerda == 'PS' ? '#f0ad4e' : processo.probabilidadePerda == 'RE' ? '#5cb85c' : '#337ab7'}}"></div>
+                           <br>
+                        </div>                        
+                     </li>
+                     <li class="ghx-column ui-sortable">
+                        <div class="ghx-issue ghx-has-avatar link" ng-repeat="processo in ctrl.processosFaseRecursal" ng-click="ctrl.abrirProcesso(processo)">
+                           <span class="label label-primary lb-md">{{processo.numero}}</span>
+                           <strong class="pull-right primary-font">{{processo.descricaoProbabilidadePerda}}&nbsp;({{processo.valorCausa | currency }})</strong>
+                           <small class=" text-muted">
+                           <div class="ghx-summary"><span class="ghx-inner">{{processo.autor}}{{processo.partes}}</span></div>
+                           </small>
+                           <small class=" text-muted">
+                              <i class="fa fa-clock-o fa-fw"></i> 
+                                 <div ng-if="!cotacao.numeroDiasRenovacao" style="display: inline-flex">{{processo.criacao  | date:'dd/MM/yyyy HH:mm' }}</div>
+                               <div ng-if="cotacao.numeroDiasRenovacao" style="display: inline-flex">
+                                 Apólice {{cotacao.numeroDiasRenovacao < 0 ? cotacao.numeroDiasRenovacao * -1 : cotacao.numeroDiasRenovacao}} dias 
+                                 <div ng-if="cotacao.numeroDiasRenovacao <= 0">&nbsp;para vencer</div>
+                                 <div ng-if="cotacao.numeroDiasRenovacao > 0">&nbsp;vencidos</div>
+                               </div>
+                           </small>
+                           <div class="ghx-grabber" style="background-color:{{processo.probabilidadePerda == 'PR' ? '#d9534f' : processo.probabilidadePerda == 'PS' ? '#f0ad4e' : processo.probabilidadePerda == 'RE' ? '#5cb85c' : '#337ab7'}}"></div>
+                           <br>
+                        </div>                        
+                     </li>
+                     <li class="ghx-column ui-sortable">
+                        <div class="ghx-issue ghx-has-avatar link" ng-repeat="processo in ctrl.processosFaseSuspenso" ng-click="ctrl.abrirProcesso(processo)">
+                           <span class="label label-primary lb-md">{{processo.numero}}</span>
+                           <strong class="pull-right primary-font">{{processo.descricaoProbabilidadePerda}}&nbsp;({{processo.valorCausa | currency }})</strong>
+                           <small class=" text-muted">
+                           <div class="ghx-summary"><span class="ghx-inner">{{processo.autor}}{{processo.partes}}</span></div>
+                           </small>
+                           <small class=" text-muted">
+                              <i class="fa fa-clock-o fa-fw"></i> 
+                                 <div ng-if="!cotacao.numeroDiasRenovacao" style="display: inline-flex">{{processo.criacao  | date:'dd/MM/yyyy HH:mm' }}</div>
+                               <div ng-if="cotacao.numeroDiasRenovacao" style="display: inline-flex">
+                                 Apólice {{cotacao.numeroDiasRenovacao < 0 ? cotacao.numeroDiasRenovacao * -1 : cotacao.numeroDiasRenovacao}} dias 
+                                 <div ng-if="cotacao.numeroDiasRenovacao <= 0">&nbsp;para vencer</div>
+                                 <div ng-if="cotacao.numeroDiasRenovacao > 0">&nbsp;vencidos</div>
+                               </div>
+                           </small>
+                           <div class="ghx-grabber" style="background-color:{{processo.probabilidadePerda == 'PR' ? '#d9534f' : processo.probabilidadePerda == 'PS' ? '#f0ad4e' : processo.probabilidadePerda == 'RE' ? '#5cb85c' : '#337ab7'}}"></div>
+                           <br>
+                        </div>                        
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

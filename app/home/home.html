@@ -17,10 +17,15 @@
 	            	</a>
 	          	</li>
 	          	<li> 
+		            <a ui-sref="quadroProcessos" class="btn btn-primary center-block btn-home">
+	              		<i class="fa fa-th"></i><span>Quadro de Processos</span>
+	            	</a>
+	          	</li>
+	          	<li> 
 	            	<a ui-sref="logAcao" class="btn btn-primary center-block btn-home">
 	              		<i class="fa fa-search"></i><span>Consulta de Log</span>
 	            	</a>
-	          	</li>       	 	     	                 
+	          	</li>	 	     	                 
 	        </ul>      
     	</div> 
     </div>
@@ -33,7 +38,7 @@
 				</div>
 				<div class="panel-body">
 			    	<div class="col-md-8" style="padding-left: 0;">
-						<div class="col-md-4">
+						<div class="col-md-5">
 						    <div class="table-responsive">
 						        <table class="table table-bordered table-hover table-striped">
 						            <thead>
@@ -58,7 +63,7 @@
 			                    </div>
 						    </div>
 						</div>
-						<div class="col-md-8 graph-container graph-container-valor-causa-processos-probabilidade-perda">	
+						<div class="col-md-7 graph-container graph-container-valor-causa-processos-probabilidade-perda">	
 							<div 
 								bar-chart 
 								bar-data=ctrl.valorCausaprocessosPorProbabilidade
@@ -66,16 +71,17 @@
 								bar-x='label'
 								bar-y='["value"]'
 								bar-labels='["Total"]'
-								hideHover='auto'>
+								id="bar-example">
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 graph-container graph-container-numero-processos-probabilidade-perda">	
 						<div
 							donut-chart
-							donut-data="ctrl.numeroProcessosPorProbabilidade"
+							donut-data=ctrl.numeroProcessosPorProbabilidade
 							donut-label-color='"#000000"' 
-							donut-background-color='"#ffffff"'>
+							donut-background-color='"#ffffff"'
+							donut-colors=ctrl.coresGrafico>
 						</div>
 					</div>
 				</div>
